@@ -1,0 +1,34 @@
+body{
+    background-color: #ece8e8;
+}
+#app{
+    width: 320px;
+    margin:auto;
+}
+.jishiben_title{
+    text-align: center;
+    margin: 30px auto;
+}
+.jishiben_title>span{
+    color: #a52d2d;
+    font-size: 33px;
+}
+
+.jishiben_body{
+    text-align: center;
+    margin:20px;
+    background-color: #c7c7c7;
+    border-radius: 3px;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 4px 4px 4px #adadad;
+}
+.jishiben_body input{
+    border: none;
+    outline: none;
+    width: 270px;
+    height: 32px;
+    border-radius: 3px;
+    font-size: 22px;
+}
+

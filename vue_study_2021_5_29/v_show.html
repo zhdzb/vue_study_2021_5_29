@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="test">
+  <h2 v-show="test" @click="doa">test</h2>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  var test = new Vue({
+    el:"#test",
+    data:{
+      test:true
+    },
+    methods: {
+      doa: function () {
+        this.test = !this.test;
+      }
+    }
+  })
+</script>
+</body>
+</html>

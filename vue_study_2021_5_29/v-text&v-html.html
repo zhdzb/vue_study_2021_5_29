@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2 v-text="message">base</h2>
+  <h2 v-text="info">base</h2>
+  <h2 >{{message}}base</h2>
+</div>
+<div id="app_html">
+  <p v-html="content"></p>
+  <p v-text="content"></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  var app = new Vue({
+    el:"#app",
+    data:{
+      message:"study!!",
+      info:"web"
+    }
+  })
+</script>
+<script>
+  var app_html = new Vue({
+    el:"#app_html",
+    data:{
+      //content:"普通文字"
+      content:"<a href='http://www.baidu.com'>html属性</a>"
+    }
+  })
+</script>
+</body>
+</html>

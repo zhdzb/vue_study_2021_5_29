@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="jishiben.css"/>
+</head>
+<body>
+  <!--主体区域-->
+  <section id="todoapp">
+    <!---输入框--->
+    <header class="header">
+      <h1>记事本</h1>
+      <input autofocus="autofocus" autocomplete="off" placeholder="请输入任务"
+       class="new-todo">
+    </header>
+    <!---列表--->
+    <section class="main">
+      <ul class="todo-list">
+        <li class="todo" v-for="(item,index) in list">
+          <div class="view">
+            <span class="index">{{index+1}}</span>
+            <label>{{item}}</label>
+            <button class="destroy" ></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <!-- 统计和清空 -->
+    <footer class="footer" >
+      <span class="todo-count">
+        <strong>1</strong> items left
+      </span>
+      <button class="clear-completed">
+        Clear
+      </button>
+    </footer>
+  </section>
+  <!-- 底部 -->
+  <footer class="info">
+    <p>
+      <a href="http://www.itheima.com/"><img src="./img/black.png" alt="" /></a>
+    </p>
+  </footer>
+  </section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  var app = new Vue({
+    el:"#todoapp",
+    data:{
+      list:["写代码","吃饭","睡觉"],
+      inputValue:""
+    }
+  })
+</script>
+</body>
+</html>

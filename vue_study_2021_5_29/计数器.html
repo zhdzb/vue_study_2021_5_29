@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="v_study.css"/>
+</head>
+<body>
+<div id="app" class="container">
+  <div class="btn">
+    <button @click="btn_down">-</button>
+    <span>{{temp.num}}</span>
+    <button @click="btn_up">+</button>
+  </div>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  var app = new Vue({
+    el:"#app",
+    data:{
+      temp:{
+        num:0
+      }
+    },
+    methods:{
+      btn_down:function (){
+        if(this.temp.num != 0)
+          this.temp.num--;
+      },
+      btn_up:function (){
+        this.temp.num++;
+      }
+    }
+  })
+</script>
+</body>
+</html>

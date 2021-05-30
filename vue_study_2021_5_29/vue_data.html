@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  {{message}}
+  <h2>{{school}}</h2>
+  <span>{{school.name}}</span>
+  <ul>
+    <li>{{spot[0] }}</li>
+    <li>{{spot[2] }}</li>
+  </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  var s = new Vue({
+    el:"#app",
+    data:{
+      message:"你好",
+      school:{
+        name:"jay",
+        number:"27"
+      },
+      spot:["cd","sh","bj"]
+    }
+  })
+</script>
+</body>
+</html>
