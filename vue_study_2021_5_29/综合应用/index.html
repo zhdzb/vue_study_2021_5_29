@@ -27,13 +27,13 @@
                     <li v-for="item in musicList">
                         <a href="javascript:;" @click="playMusic(item.id)"></a>
                         <b>{{item.name}}</b>
-                        <span><i></i></span>
+                        <span v-if="item.mvid!=0" @click="playMv(item.mvid)"><i></i></span>
                     </li>
                 </ul>
                 <img src="images/line.png" class="switch_btn" alt="">
             </div>
             <!-- 歌曲信息容器 -->
-            <div class="player_con" >
+            <div class="player_con" :class="{playing:isPlaying}">
                 <img src="images/player_bar.png" class="play_bar" />
                 <!-- 黑胶碟片 -->
                 <img src="images/disc.png" class="disc autoRotate" />
@@ -43,21 +43,23 @@
             <div class="comment_wrapper">
                 <h5 class='title'>热门留言</h5>
                 <div class='comment_list'>
-                    <dl >
-                        <dt><img alt=""></dt>
-                        <dd class="name"></dd>
-                        <dd class="detail"></dd>
+                    <dl v-for="item in comment">
+                        <dt>
+                            <img alt="" :src="item.user.avatarUrl">
+                        </dt>
+                        <dd class="name">{{item.user.nickname}}</dd>
+                        <dd class="detail">{{item.content}}</dd>
                     </dl>
                 </div>
                 <img src="images/line.png" class="right_line">
             </div>
         </div>
         <div class="audio_con">
-            <audio ref='audio' :src="musicUrl" controls autoplay loop class="myaudio"></audio>
+            <audio ref='audio' @play="play" @pause="pause" :src="musicUrl" controls autoplay loop class="myaudio"></audio>
         </div>
-        <div class="video_con"  style="display: none;">
-            <video controls="controls"></video>
-            <div class="mask" ></div>
+        <div class="video_con"  v-show="isShow" style="display: none;">
+            <video controls="controls" :src="mvUrl" v-if="isShow"></video>
+            <div class="mask" @click="hide" ></div>
         </div>
     </div>
 </div>

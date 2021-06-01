@@ -8,10 +8,22 @@
 var app = new Vue({
     el:"#player",
     data:{
+        //查询关键字
         query:"",
+        //歌曲数组
         musicList:[],
+        //歌曲地址
         musicUrl:"",
-        picUrl:""
+        //歌曲封面
+        picUrl:"",
+        //歌曲评论
+        comment:[],
+        //动画播放状态
+        isPlaying:false,
+        //遮罩层的显示状态
+        isShow:false,
+        //mv地址
+        mvUrl:""
     },
     methods:{
         searchMusic:function (){
@@ -54,23 +66,50 @@ var app = new Vue({
                     that.picUrl = response.data.songs[0].al.picUrl;
                 },function (err){
 
+                });
+            /*4.热门评论获取
+            请求地址:https://autumnfish.cn/comment/hot?type=0
+                请求方法:get
+            请求参数:id(歌曲id,地址中的type固定为0)
+            响应内容:歌曲的热门评论*/
+            axios.get("https://autumnfish.cn/comment/hot?type=0&id="+musicId)
+                .then(function (response){
+                    //console.log(response);
+                    that.comment = response.data.hotComments;
+                    //console.log(that.comment);
+                },function (err){
+
                 })
         },
+        play:function (){
+            this.isPlaying = true;
+        },
+        pause:function (){
+            this.isPlaying = false;
+        },
+        /*
+            5.mv地址获取
+                请求地址:https://autumnfish.cn/mv/url
+                请求方法:get
+                请求参数:id(mvid,为0表示没有mv)
+                响应内容:mv的地址
+        */
+        playMv:function (mvid){
+            var that = this;
+            axios.get("https://autumnfish.cn/mv/url?id="+mvid)
+            .then(function (response){
+                that.isShow = true;
+                that.mv = response.data.data.url;
+            },function (err){
+
+            })
+        },
+        //隐藏
+        hide:function (){
+            this.isShow = false;
+        }
     }
 
 })
 
 
-/*
-
-  4.热门评论获取
-    请求地址:https://autumnfish.cn/comment/hot?type=0
-    请求方法:get
-    请求参数:id(歌曲id,地址中的type固定为0)
-    响应内容:歌曲的热门评论
-  5.mv地址获取
-    请求地址:https://autumnfish.cn/mv/url
-    请求方法:get
-    请求参数:id(mvid,为0表示没有mv)
-    响应内容:mv的地址
-*/
